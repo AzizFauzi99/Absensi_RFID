@@ -29,13 +29,25 @@
         }
 
     }
+
+    // kosongkan tabel tmprfid
+    mysqli_query($konek, "delete from tmprfid")
 ?>
 
 <!DOCTYPE html>
  <html>
  <head>
      <?php include "header.php"; ?>
-     <title>Data Karyawan</title>
+     <title>Tambah Data Karyawan</title>
+
+     <!-- pembacaan no kartu otomatis -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setInterval(function(){
+                $("#norfid").load('nokartu.php')
+            }, 0); //pembacaan file nokartu.php, tiap 1 detik
+        });
+    </script>
  </head>
  <body>
     <?php include "menu.php"; ?>
@@ -45,10 +57,8 @@
         <h3>Tambah Data Karyawan</h3>
 
         <form action="" method="POST">
-            <div class="form-floating mb-3 mt-5">
-                <input type="text" class="form-control" id="nomorkartu" placeholder="Nomor Kartu" name="nokartu">
-                <label for="nomorkartu">No Kartu</label>
-            </div>
+            <div id="norfid"> </div>
+
             <div class="form-floating">
                 <input type="text" class="form-control" id="nama" placeholder="Nama Karyawan" name="nama">
                 <label for="nama">Nama Karyawan</label>
